@@ -23,25 +23,25 @@ Route::controller(AuthController::class)->group(function () {
 // Authenticated user routes
 Route::middleware('auth')->group(function () {
 
-
     // Project routes
     Route::controller(ProjectController::class)->group(function () {
         // Show home page or project page
         Route::get('/', 'show')->name('project.show');
         
-        // get specific project
-        Route::get('/{id}' , 'get')->name('project.get');
+        // Get specific project details
+        Route::get('/projects/{project}', 'get')->name('project.get');
 
-        // add or store project
-        Route::post('/addtask' , 'store')->name('project.store');
+        // Add or store a new task
+        Route::post('/projects/addtask', 'store')->name('project.store');
 
-        // display update view
-        Route::get('/update/{id}' , 'edit')->name('project.edit');
+        // Display update view for a specific project
+        Route::get('/projects/update/{project}', 'edit')->name('project.edit');
 
-        // update project
-        Route::post('/update/{id}' , 'update')->name('project.update');
+        // Update a specific project
+        Route::post('/projects/update/{project}', 'update')->name('project.update');
 
-        // delete project
-        Route::get('/delete/{id}' , 'destroy')->name('project.delete');
+        // Delete a specific project
+        Route::post('/projects/delete/{project}', 'destroy')->name('project.delete');
     });
 });
+
