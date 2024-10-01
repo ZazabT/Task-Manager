@@ -4,20 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
-use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\QueryException;
+use Illuminate\Console\View\Components\Task;
 
 class ProjectController extends Controller
 {
 
     // return home page or project view 
     public function show(){
-     return view('project.show');
+     // get all project based on the user id
+     $projects = Project::where('created_by' , Auth::user()->id)->get();
+     return view('project.show' , compact('projects'));
     }
 
     // get specific project
     public function get(Project $project){
-        return view('project.get' , ['project' => $project]);
+
+        // load all tasks based on the project id
+        $project->load('tasks');
+        
+        return view('project.get' , compact('project '));
     }
 
     // add or store project
@@ -53,7 +60,7 @@ class ProjectController extends Controller
 
     // display update view
     public function edit(Project $project){
-        return view('project.edit' , ['project' => $project]);
+        return view('project.edit' , compact('project'));
     }
 
     // update project
