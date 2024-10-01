@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::controller(ProjectController::class)->group(function () {
         // Show home page or project page
         Route::get('/', 'show')->name('project.show');
-
+        
         // get specific project
         Route::get('/{id}' , 'get')->name('project.get');
 
