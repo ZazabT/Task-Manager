@@ -14,7 +14,7 @@ class Project_User extends Model
     protected $fillable = [
         'project_id',
         'user_id',
-        'role',
+        'role_id',
         'invited_at',
         'accepted_at',
     ];
@@ -35,5 +35,4 @@ class Project_User extends Model
     }
 
 
-    
 }

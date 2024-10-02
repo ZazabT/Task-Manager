@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->enum('role', ['admin', 'contributor', 'viewer']);
             $table->dateTime('invited_at')->nullable();
             $table->dateTime('accepted_at')->nullable();
             $table->timestamps();

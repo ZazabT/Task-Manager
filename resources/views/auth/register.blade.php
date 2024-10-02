@@ -24,7 +24,7 @@
                 <div class="col-md-6 d-flex justify-content-center align-items-center">
                     <!-- Already have an account Link -->
                     <div class="signin mt-3">
-                        <span>Already have an account? <a href="{{ route('login') }}">Log in here</a></span>
+                        <span>Already have an account? <a href="{{ route('auth.login.view') }}">Log in here</a></span>
                     </div>
                     <div class="input-box">
                         @if ($errors->any())
